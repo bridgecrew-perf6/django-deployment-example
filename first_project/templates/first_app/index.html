@@ -1,0 +1,53 @@
+{% extends "first_app/base.html" %}
+{% block body_block %}   
+
+    <div class="container">
+      <div class="jumbotron">
+
+          <!-- <h1>MA H1 TAG!</h1>
+      <h2>  {{ insert_content }} </h2> -->
+      <h2> Here are your web pages in your database:</h2>
+      <p>Open in Chrome Incognito mode if css changes do not work.</p>
+
+      <p>Go to /formpage to fil out the form</p>
+
+      <div class="djangotwo">
+        {% if web_pages %}
+          <table>
+
+            <thead>
+              <th>Site Name</th>
+              <th>Date Accessed</th>
+            </thead>
+
+          {% for webpg in web_pages %}
+            <tr>
+              <td>{{ webpg.name }}</td>
+              <td>{{ webpg.url }}</td>
+            </tr>
+          {% endfor %}
+
+          </table>       
+        {% else %}
+        <p>No Web Pages found!</p>
+        {% endif %}
+
+
+        <!-- LESSON 5 ON AUTHENTICATION     -->
+        <h1>Django Level Five</h1>
+        {% if user.is_authenticated %}
+            <h2>Welcome {{ user.username }}!</h2>
+        {% else %}
+            <h2>Welcome to the site!</h2>
+        {% endif %}
+
+
+      </div>
+
+      </div>
+    </div>
+
+{% endblock %}
+   
+
+
